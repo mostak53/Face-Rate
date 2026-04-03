@@ -1,0 +1,56 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "User profile and role information",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "email": { "type": "string", "format": "email" },
+        "role": { "type": "string", "enum": ["user", "admin"] },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["uid", "email", "role"]
+    },
+    "Photo": {
+      "title": "Photo",
+      "description": "Photo metadata for rating",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "celebrityName": { "type": "string" },
+        "angle": { "type": "string" },
+        "imageUrl": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["name", "imageUrl", "celebrityName"]
+    },
+    "Rating": {
+      "title": "Rating",
+      "description": "User rating for a photo",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "photoId": { "type": "string" },
+        "rating": { "type": "number" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["userId", "photoId", "rating"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "User profiles"
+    },
+    "/photos/{photoId}": {
+      "schema": "Photo",
+      "description": "Photos to be rated"
+    },
+    "/ratings/{ratingId}": {
+      "schema": "Rating",
+      "description": "Ratings given by users"
+    }
+  }
+}

@@ -1,0 +1,5 @@
+{
+  "name": "Human Face Rating System",
+  "description": "A platform to rate human faces based on the golden ratio and aesthetic appeal, featuring user and admin dashboards.",
+  "requestFramePermissions": []
+}
